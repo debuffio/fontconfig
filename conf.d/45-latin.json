@@ -1,0 +1,94 @@
+{
+  "description": "Set substitutions for Latin fonts",
+  "$comment": "Mark common families with their generics so we'll get something reasonable",
+  "add_font_as": [
+    {
+      "binding": "weak",
+      "priority": "default",
+      "generic_family": {
+        "serif": [
+          "Bitstream Vera Serif",
+          "Cambria",
+          "Constantia",
+          "DejaVu Serif",
+          "Elephant",
+          "Garamond",
+          "Georgia",
+          "Liberation Serif",
+          "Luxi Serif",
+          "MS Serif",
+          "Nimbus Roman No9 L",
+          "Nimbus Roman",
+          "Palatino Linotype",
+          "Thorndale AMT",
+          "Thorndale",
+          "Times New Roman",
+          "Times"
+        ],
+        "sans-serif": [
+          "Albany AMT",
+          "Albany",
+          "Arial Unicode MS",
+          "Arial",
+          "Bitstream Vera Sans",
+          "Britannic",
+          "Calibri",
+          "Candara",
+          "Century Gothic",
+          "Corbel",
+          "DejaVu Sans",
+          "Helvetica LT Std",
+          "Helvetica",
+          "Haettenschweiler",
+          "Liberation Sans",
+          "MS Sans Serif",
+          "Nimbus Sans L",
+          "Nimbus Sans",
+          "Luxi Sans",
+          "Tahoma",
+          "Trebuchet MS",
+          "Twentieth Century",
+          "Verdana"
+        ],
+        "monospace": [
+          "Andale Mono",
+          "Bitstream Vera Sans Mono",
+          "Consolas",
+          "Courier New",
+          "Courier Std",
+          "Courier",
+          "Cumberland AMT",
+          "Cumberland",
+          "DejaVu Sans Mono",
+          "Fixedsys",
+          "Inconsolata",
+          "Liberation Mono",
+          "Luxi Mono",
+          "Nimbus Mono L",
+          "Nimbus Mono",
+          "Nimbus Mono PS",
+          "Terminal"
+        ],
+        "fantasy": [
+          "Bauhaus Std",
+          "Cooper Std",
+          "Copperplate Gothic Std",
+          "Impact"
+        ],
+        "cursive": [
+          "Comic Sans MS",
+          "ITC Zapf Chancery Std",
+          "Zapfino"
+        ],
+        "system-ui": [
+          "Adwaita Sans",
+          "Cantarell",
+          "Noto Sans UI",
+          "Segoe UI",
+          "Segoe UI Historic",
+          "Segoe UI Symbol"
+        ]
+      }
+    }
+  ]
+}

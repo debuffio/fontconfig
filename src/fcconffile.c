@@ -371,7 +371,7 @@ _fc_convert_json_process_add_font_as_item (FcStrBuf           *buf,
     const char         *binding = "weak";
     const char         *priority = NULL;
     const char         *edit_mode = NULL;
-    FcPriority          prior;
+    FcPriority          prior = FcPriorityDefault;
 
     if (!item)
 	return FcTrue;
@@ -397,20 +397,20 @@ _fc_convert_json_process_add_font_as_item (FcStrBuf           *buf,
     if (json_object_object_get_ex (item, "edit_mode_for_scan", &edit_mode_obj))
 	edit_mode = json_object_get_string (edit_mode_obj);
 
-    if (!json_object_object_get_ex (item, "priority", &priority_obj))
-	return FcFalse;
-    priority = json_object_get_string (priority_obj);
+    if (json_object_object_get_ex (item, "priority", &priority_obj)) {
+	priority = json_object_get_string (priority_obj);
 
-    if (!priority)
-	return FcFalse;
-    else if (strcmp (priority, "default") == 0)
-	prior = FcPriorityDefault;
-    else if (strcmp (priority, "prefer") == 0)
-	prior = FcPriorityPrefer;
-    else if (strcmp (priority, "accept") == 0)
-	prior = FcPriorityAccept;
-    else
-	return FcFalse;
+	if (!priority)
+	    return FcFalse;
+	else if (strcmp (priority, "default") == 0)
+	    prior = FcPriorityDefault;
+	else if (strcmp (priority, "prefer") == 0)
+	    prior = FcPriorityPrefer;
+	else if (strcmp (priority, "accept") == 0)
+	    prior = FcPriorityAccept;
+	else
+	    return FcFalse;
+    }
 
     if (!json_object_object_get_ex (item, "generic_family", &generic_family_obj))
 	return FcFalse;
@@ -481,7 +481,7 @@ _fc_convert_json_process_add_font_for_item (FcStrBuf           *buf,
     const char         *binding = "weak";
     const char         *priority = NULL;
     const char         *edit_mode = NULL;
-    FcPriority          prior;
+    FcPriority          prior = FcPriorityPrefer;
 
     if (!item)
 	return FcTrue;
@@ -508,20 +508,20 @@ _fc_convert_json_process_add_font_for_item (FcStrBuf           *buf,
     if (json_object_object_get_ex (item, "edit_mode_for_scan", &edit_mode_obj))
 	edit_mode = json_object_get_string (edit_mode_obj);
 
-    if (!json_object_object_get_ex (item, "priority", &priority_obj))
-	return FcFalse;
-    priority = json_object_get_string (priority_obj);
+    if (json_object_object_get_ex (item, "priority", &priority_obj)) {
+	priority = json_object_get_string (priority_obj);
 
-    if (!priority)
-	return FcFalse;
-    else if (strcmp (priority, "default") == 0)
-	prior = FcPriorityDefault;
-    else if (strcmp (priority, "prefer") == 0)
-	prior = FcPriorityPrefer;
-    else if (strcmp (priority, "accept") == 0)
-	prior = FcPriorityAccept;
-    else
-	return FcFalse;
+	if (!priority)
+	    return FcFalse;
+	else if (strcmp (priority, "default") == 0)
+	    prior = FcPriorityDefault;
+	else if (strcmp (priority, "prefer") == 0)
+	    prior = FcPriorityPrefer;
+	else if (strcmp (priority, "accept") == 0)
+	    prior = FcPriorityAccept;
+	else
+	    return FcFalse;
+    }
 
     if (!json_object_object_get_ex (item, "generic_family", &generic_family_obj))
 	return FcFalse;

@@ -1,0 +1,18 @@
+{
+  "description": "Set preferable fonts for Khmer",
+  "add_font_for": [
+    {
+      "binding": "weak",
+      "priority": "prefer",
+      "edit_mode_for_scan": "prepend",
+      "generic_family": {
+        "serif": [
+          "Khmer OS"
+        ],
+        "sans-serif": [
+          "Khmer OS"
+        ]
+      }
+    }
+  ]
+}

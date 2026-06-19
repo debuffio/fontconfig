@@ -1,0 +1,99 @@
+{
+  "description": "Set substitutions for non-Latin fonts",
+  "$comment": "Mark common families with their generics so we'll get something reasonable",
+  "add_font_as": [
+    {
+      "binding": "weak",
+      "priority": "default",
+      "generic_family": {
+        "serif": [
+          "Nazli",
+          "Lotoos",
+          "Mitra",
+          "Ferdosi",
+          "Badr",
+          "Zar",
+          "Titr",
+          "Jadid",
+          "Kochi Mincho",
+          "AR PL SungtiL GB",
+          "AR PL Mingti2L Big5",
+          "ＭＳ 明朝",
+          "Noto Serif CJK KR",
+          "NanumMyeongjo",
+          "MgOpen Canonica",
+          "Sazanami Mincho",
+          "AR PL ZenKai Uni",
+          "ZYSong18030",
+          "FreeSerif",
+          "SimSun"
+        ],
+        "sans-serif": [
+          "Arshia",
+          "Elham",
+          "Farnaz",
+          "Nasim",
+          "Sina",
+          "Roya",
+          "Koodak",
+          "Terafik",
+          "Kochi Gothic",
+          "AR PL KaitiM GB",
+          "AR PL KaitiM Big5",
+          "ＭＳ ゴシック",
+          "Noto Sans CJK KR",
+          "NanumGothic",
+          "MgOpen Modata",
+          "Sazanami Gothic",
+          "AR PL ShanHeiSun Uni",
+          "ZYSong18030",
+          "FreeSans"
+        ],
+        "monospace": [
+          "NSimSun",
+          "ZYSong18030",
+          "Noto Sans Mono CJK KR",
+          "NanumGothicCoding",
+          "FreeMono"
+        ],
+        "fantasy": [
+          "Homa",
+          "Kamran",
+          "Fantezi",
+          "Tabassom"
+        ],
+        "cursive": [
+          "IranNastaliq",
+          "Nafees Nastaleeq"
+        ],
+        "system-ui": [
+          "Noto Sans Arabic UI",
+          "Noto Sans Bengali UI",
+          "Noto Sans Devanagari UI",
+          "Noto Sans Gujarati UI",
+          "Noto Sans Gurmukhi UI",
+          "Noto Sans Kannada UI",
+          "Noto Sans Khmer UI",
+          "Noto Sans Lao UI",
+          "Noto Sans Malayalam UI",
+          "Noto Sans Myanmar UI",
+          "Noto Sans Oriya UI",
+          "Noto Sans Sinhala UI",
+          "Noto Sans Tamil UI",
+          "Noto Sans Telugu UI",
+          "Noto Sans Thai UI",
+          "Leelawadee UI",
+          "Nirmala UI",
+          "Yu Gothic UI",
+          "Meiryo UI",
+          "MS UI Gothic",
+          "Khmer UI",
+          "Noto Sans CJK KR",
+          "Lao UI",
+          "Microsoft JhengHei UI",
+          "Microsoft YaHei UI"
+        ]
+      }
+    }
+  ]
+}

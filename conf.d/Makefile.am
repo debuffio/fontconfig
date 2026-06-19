@@ -22,9 +22,30 @@
 #  PERFORMANCE OF THIS SOFTWARE.
 
 NULL =
+
+noinst_PROGRAMS = json2conf
+
+json2conf_SOURCES = json2conf.c
+json2conf_LDADD = $(top_builddir)/src/libfontconfig.la
+json2conf_CFLAGS = -I$(top_srcdir) -I$(top_srcdir)/src $(WARN_CFLAGS)
+
+JSON_SOURCES = \
+	40-nonlatin.json \
+	45-generic.json \
+	45-latin.json \
+	60-latin.json \
+	65-khmer.json \
+	65-nonlatin.json \
+	69-unifont.json \
+	$(NULL)
+
+JSON_CONFS = $(JSON_SOURCES:.json=.conf)
+JSON_CONFS += 80-scan.conf
+
 BUILT_SOURCES = 		\
 	README			\
 	35-lang-normalize.conf	\
+	$(JSON_CONFS)		\
 	$(NULL)
 DOC_SOURCES = README.in
 DOC_FILES = $(DOC_SOURCES:.in=)
@@ -40,6 +61,8 @@ CONF_LINKS = \
 	40-nonlatin.conf \
 	45-generic.conf \
 	45-latin.conf \
+	45-generic.conf \
+	46-generic.conf \
 	48-guessfamily.conf \
 	48-spacing.conf \
 	49-sansserif.conf \
@@ -51,12 +74,13 @@ CONF_LINKS = \
 	65-nonlatin.conf \
 	69-unifont.conf \
 	80-delicious.conf \
+	80-scan.conf \
 	90-synthetic.conf
 
 CONF_LINKS += 70-$(PREFERRED_BITMAP).conf
 
-EXTRA_DIST = $(template_DATA) $(DOC_SOURCES)
-CLEANFILES = $(DOC_FILES)
+EXTRA_DIST = $(template_DATA) $(DOC_SOURCES) $(JSON_SOURCES)
+CLEANFILES = $(DOC_FILES) $(JSON_CONFS)
 
 configdir = $(CONFIGDIR)
 config_DATA = $(DOC_FILES)
@@ -87,32 +111,30 @@ template_DATA =				\
 	25-unhint-nonlatin.conf		\
 	30-metric-aliases.conf		\
 	35-lang-normalize.conf		\
-	40-nonlatin.conf		\
-	45-generic.conf			\
-	45-latin.conf			\
+	46-generic.conf			\
 	48-guessfamily.conf		\
 	48-spacing.conf			\
 	49-sansserif.conf		\
 	50-user.conf			\
 	51-local.conf			\
 	60-generic.conf			\
-	60-latin.conf			\
 	65-fonts-persian.conf		\
-	65-khmer.conf			\
-	65-nonlatin.conf		\
-	69-unifont.conf			\
 	70-no-bitmaps.conf		\
 	70-no-bitmaps-and-emoji.conf	\
 	70-no-bitmaps-except-emoji.conf	\
 	70-yes-bitmaps.conf		\
 	80-delicious.conf		\
-	90-synthetic.conf
+	90-synthetic.conf		\
+	$(JSON_CONFS)
 
 README: $(srcdir)/README.in
 	sed "s|\@TEMPLATEDIR\@|$(templatedir)|" $< > $@
 
 35-lang-normalize.conf: ../fc-lang/Makefile.am
 	cd ../fc-lang && $(MAKE) $(AM_MAKEFLAGS) $(top_builddir)/conf.d/35-lang-normalize.conf
+
+$(JSON_CONFS): $(JSON_SOURCES) json2conf$(EXEEXT)
+	$(builddir)/json2conf$(EXEEXT) -o $(builddir) $(addprefix $(srcdir)/,$(JSON_SOURCES))
 
 install-data-hook:
 	$(PYTHON) $(srcdir)/link_confs.py $(templatedir) $(configdir) $(CONF_LINKS)

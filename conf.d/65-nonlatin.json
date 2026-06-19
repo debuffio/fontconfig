@@ -1,0 +1,226 @@
+{
+  "description": "Set preferable fonts for non-Latin",
+  "add_font_for": [
+    {
+      "binding": "weak",
+      "priority": "prefer",
+      "generic_family": {
+        "serif": [
+          "Artsounk", // armenian
+          "BPG UTF8 M", // georgian
+          "Kinnari", // thai
+          "Norasi", // thai
+          "Frank Ruehl", // hebrew
+          "Dror", // hebrew
+          "JG LaoTimes", // lao
+          "Saysettha Unicode", // lao
+          "Pigiarniq", // canadian syllabics
+          "B Davat", // arabic (fa)
+          "B Compset", // arabic (fa)
+          "Kacst-Qr", // arabic (ar)
+          "Urdu Nastaliq Unicode", // arabic (ur)
+          "Raghindi", // devanagari
+          "Mukti Narrow", // bengali
+          "malayalam", // malayalam
+          "Sampige", // kannada
+          "padmaa", // gujarati
+          "Hapax Berbère", // tifinagh
+          "MS Mincho", // han (ja)
+          "SimSun", // han (zh-cn,zh-tw)
+          "PMingLiu", // han (zh-tw)
+          "WenQuanYi Zen Hei", // han (zh-cn,zh-tw)
+          "WenQuanYi Bitmap Song", // han (zh-cn,zh-tw)
+          "AR PL ShanHeiSun Uni", // han (ja,zh-cn,zh-tw)
+          "AR PL New Sung", // han (zh-cn,zh-tw)
+          "ZYSong18030", // han (zh-cn,zh-tw)
+          "HanyiSong", // han (zh-cn,zh-tw)
+          "Hiragino Mincho ProN", // han (ja) - macOS
+          "Songti SC", // han (zh-cn) - macOS
+          "Songti TC", // han (zh-tw) - macOS
+          "SimSong", // han (zh-cn) - macOS
+          "MgOpen Canonica",
+          "Sazanami Mincho",
+          "IPAMonaMincho",
+          "IPAMincho",
+          "Kochi Mincho",
+          "AR PL SungtiL GB",
+          "AR PL Mingti2L Big5",
+          "AR PL Zenkai Uni",
+          "ＭＳ 明朝",
+          "ZYSong18030",
+          "Noto Serif CJK KR", // hangul (ko)
+          "NanumMyeongjo", // hangul (ko)
+          "AppleMyungjo", // hangul (ko) - macOS
+          "KacstQura",
+          "Frank Ruehl CLM",
+          "Lohit Bengali",
+          "Lohit Gujarati",
+          "Lohit Hindi",
+          "Lohit Marathi",
+          "Lohit Maithili",
+          "Lohit Kashmiri",
+          "Lohit Konkani",
+          "Lohit Nepali",
+          "Lohit Sindhi",
+          "Lohit Punjabi",
+          "Lohit Tamil",
+          "Rachana",
+          "Lohit Malayalam",
+          "Lohit Kannada",
+          "Lohit Telugu",
+          "Lohit Odia",
+          "LKLUG"
+        ],
+        "sans-serif": [
+          "Nachlieli", // hebrew
+          "Lucida Sans Unicode",
+          "Yudit Unicode",
+          "Kerkis", // greek
+          "ArmNet Helvetica", // armenian
+          "Artsounk", // armenian
+          "BPG UTF8 M", // georgian
+          "Waree", // thai
+          "Loma", // thai
+          "Garuda", // thai
+          "Umpush", // thai
+          "Saysettha Unicode", // lao?
+          "JG Lao Old Arial", // lao
+          "GF Zemen Unicode", // ethiopic
+          "Pigiarniq", // canadian syllabics
+          "B Davat", // arabic (fa)
+          "B Compset", // arabic (fa)
+          "Kacst-Qr", // arabic (ar)
+          "Urdu Nastaliq Unicode", // arabic (ur)
+          "Raghindi", // devanagari
+          "Mukti Narrow", // bengali
+          "malayalam", // malayalam
+          "Sampige", // kannada
+          "padmaa", // gujarati
+          "Hapax Berbère", // tifinagh
+          "MS Gothic", // han (ja)
+          "UmePlus P Gothic", // han (ja)
+          "Microsoft YaHei", // han (zh-cn,zh-tw)
+          "Microsoft JhengHei", // han (zh-tw)
+          "WenQuanYi Zen Hei", // han (zh-cn,zh-tw)
+          "WenQuanYi Bitmap Song", // han (zh-cn,zh-tw)
+          "AR PL ShanHeiSun Uni", // han (ja,zh-cn,zh-tw)
+          "AR PL New Sung", // han (zh-cn,zh-tw)
+          "Hiragino Sans", // han (ja) - macOS
+          "PingFang SC", // han (zh-cn) - macOS
+          "PingFang TC", // han (zh-tw) - macOS
+          "PingFang HK", // han (zh-hk) - macOS
+          "Hiragino Sans CNS", // han (zh-cn) - macOS
+          "Hiragino Sans GB", // han (zh-tw) - macOS
+          "MgOpen Modata",
+          "VL Gothic",
+          "IPAMonaGothic",
+          "IPAGothic",
+          "Sazanami Gothic",
+          "Kochi Gothic",
+          "AR PL KaitiM GB",
+          "AR PL KaitiM Big5",
+          "AR PL ShanHeiSun Uni",
+          "AR PL SungtiL GB",
+          "AR PL Mingti2L Big5",
+          "ＭＳ ゴシック",
+          "ZYSong18030", // han (zh-cn,zh-tw)
+          "TSCu_Paranar", // tamil
+          "Noto Sans CJK KR", // hangul (ko)
+          "NanumGothic", // hangul (ko)
+          "Apple SD Gothic Neo", // hangul (ko) - macOS
+          "KacstQura",
+          "Lohit Bengali",
+          "Lohit Gujarati",
+          "Lohit Hindi",
+          "Lohit Marathi",
+          "Lohit Maithili",
+          "Lohit Kashmiri",
+          "Lohit Konkani",
+          "Lohit Nepali",
+          "Lohit Sindhi",
+          "Lohit Punjabi",
+          "Lohit Tamil",
+          "Meera",
+          "Lohit Malayalam",
+          "Lohit Kannada",
+          "Lohit Telugu",
+          "Lohit Odia",
+          "LKLUG"
+        ],
+        "monospace": [
+          "Miriam Mono", // hebrew
+          "VL Gothic",
+          "IPAMonaGothic",
+          "IPAGothic",
+          "Sazanami Gothic",
+          "Kochi Gothic",
+          "AR PL KaitiM GB",
+          "MS Gothic", // han (ja)
+          "UmePlus Gothic", // han (ja)
+          "NSimSun", // han (zh-cn,zh-tw)
+          "MingLiu", // han (zh-tw)
+          "AR PL ShanHeiSun Uni", // han (ja,zh-cn,zh-tw)
+          "AR PL New Sung Mono", // han (zh-cn,zh-tw)
+          "HanyiSong", // han (zh-cn)
+          "AR PL SungtiL GB",
+          "AR PL Mingti2L Big5",
+          "ZYSong18030", // han (zh-cn,zh-tw)
+          "Noto Sans Mono CJK KR", // hangul (ko)
+          "NanumGothicCoding", // hangul (ko)
+          "NanumGothic", // hangul (ko)
+          "TlwgTypo", // thai
+          "TlwgTypist", // thai
+          "TlwgTypewriter", // thai
+          "TlwgMono", // thai
+          "Hasida", // hebrew
+          "GF Zemen Unicode", // ethiopic
+          "Hapax Berbère", // tifinagh
+          "Lohit Bengali",
+          "Lohit Gujarati",
+          "Lohit Hindi",
+          "Lohit Marathi",
+          "Lohit Maithili",
+          "Lohit Kashmiri",
+          "Lohit Konkani",
+          "Lohit Nepali",
+          "Lohit Sindhi",
+          "Lohit Punjabi",
+          "Lohit Tamil",
+          "Meera",
+          "Lohit Malayalam",
+          "Lohit Kannada",
+          "Lohit Telugu",
+          "Lohit Odia",
+          "LKLUG"
+        ],
+        "system-ui": [
+          "Noto Sans Arabic UI", // ar
+          "Noto Sans Bengali UI", // bn
+          "Noto Sans Devanagari UI", // hi, mai, mr
+          "Noto Sans Gujarati UI", // gu
+          "Noto Sans Gurmukhi UI", // pa
+          "Noto Sans Kannada UI", // kn
+          "Noto Sans Khmer UI", // km
+          "Noto Sans Lao UI", // lo
+          "Noto Sans Malayalam UI", // ml
+          "Noto Sans Myanmar UI", // my
+          "Noto Sans Oriya UI", // or
+          "Noto Sans Sinhala UI", // si
+          "Noto Sans Tamil UI", // ta
+          "Noto Sans Telugu UI", // te
+          "Noto Sans Thai UI", // th
+          "Leelawadee UI", // bug, th, jv, km, lo
+          "Nirmala UI", // Indic
+          "Yu Gothic UI", // han (ja)
+          "Meiryo UI", // han (ja)
+          "MS UI Gothic", // han (ja)
+          "Khmer UI", // km
+          "Noto Sans CJK KR", // ko
+          "Lao UI", // lo
+          "Microsoft YaHei UI", // han (zh-cn)
+          "Microsoft JhengHei UI" // han (zh-tw)
+        ]
+      }
+    }
+  ]
+}

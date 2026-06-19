@@ -10,6 +10,9 @@
             "family": "Baz"
         }
     ],
+    "load_xml": [
+        "conf.d/46-generic.conf",
+    ],
     "tests": [
         {
             "method": "match",

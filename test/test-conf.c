@@ -139,6 +139,17 @@ build_config (FcConfig *config, json_object *obj)
 	    allocated[root_len] = '/';
 	    strcpy (&allocated[root_len + 1], (const char *)&m[6]);
 	    s = allocated;
+	} else if ((m = FcStrStr ((const FcChar8 *)s, (const FcChar8 *)"%buildroot%")) != 0) {
+	    size_t root_len = strlen (BUILDROOT);
+	    size_t len = strlen (s);
+
+	    allocated = malloc (root_len + len);
+	    if (!allocated)
+		return FcFalse;
+	    strcpy (allocated, BUILDROOT);
+	    allocated[root_len] = '/';
+	    strcpy (&allocated[root_len + 1], (const char *)&m[11]);
+	    s = allocated;
 	} else if (strstr (s, "..") != 0) {
 	    fprintf (stderr, "W: the path traversal sequences are not allowed\n");
 	    continue;
