@@ -1165,6 +1165,9 @@ FcStrDirname (const FcChar8 *file);
 FcPublic FcChar8 *
 FcStrBasename (const FcChar8 *file);
 
+FcPublic FcChar8 *
+FcStrEscapeXML (const FcChar8 *str);
+
 FcPublic FcStrSet *
 FcStrSetCreate (void);
 
