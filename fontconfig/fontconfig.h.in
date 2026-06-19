@@ -375,6 +375,8 @@ typedef struct _FcStrSet FcStrSet;
 
 typedef struct _FcCache FcCache;
 
+typedef struct _FcConfigFile FcConfigFile;
+
 typedef void (*FcDestroyFunc) (void *data);
 typedef FcBool (*FcFilterFontSetFunc) (const FcPattern *font, void *user_data);
 
@@ -1215,6 +1217,22 @@ FcPublic FcChar8 *
 FcConfigFileGenerate (FcConfig      *config,
                       FcPattern     *pat,
                       const FcChar8 *font_path);
+
+FcPublic FcConfigFile *
+FcConfigFileCreate (void);
+
+FcPublic void
+FcConfigFileDestroy (FcConfigFile *file);
+
+FcPublic FcBool
+FcConfigFileConvertJSONtoXML (FcConfigFile  *file,
+                              const FcChar8 *json_file,
+                              const FcChar8 *output_dir);
+
+FcPublic FcBool
+FcConfigFileWriteScanPattern (FcConfigFile  *file,
+                              const FcChar8 *scan_file,
+                              const FcChar8 *output_dir);
 
 _FCFUNCPROTOEND
 
