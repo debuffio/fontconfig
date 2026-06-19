@@ -445,6 +445,7 @@ typedef struct _FcHashTable FcHashTable;
 typedef FcChar32 (*FcHashFunc) (const FcChar8 *data);
 typedef int (*FcCompareFunc) (const FcChar8 *v1, const FcChar8 *v2);
 typedef FcBool (*FcCopyFunc) (const void *src, void **dest);
+typedef FcBool (*FcHashTableIterFunc) (FcHashTable *table, void *key, void *value, void *data);
 
 struct _FcCache {
     unsigned int magic;      /* FC_CACHE_MAGIC_MMAP or FC_CACHE_ALLOC */
@@ -1744,5 +1745,10 @@ FcHashTableReplace (FcHashTable *table,
 FcPrivate FcBool
 FcHashTableRemove (FcHashTable *table,
                    void        *key);
+
+FcPrivate void
+FcHashTableForEach (FcHashTable         *table,
+                    FcHashTableIterFunc  iter_func,
+                    void                *data);
 
 #endif /* _FC_INT_H_ */
