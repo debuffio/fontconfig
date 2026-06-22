@@ -45,3 +45,15 @@ Output files will be stored as the same name but with the suffix
 .conf instead of .json.
 @SINCE@     2.18.2
 @@
+
+@RET@       FcBool
+@FUNC@      FcConfigFileWriteScanPattern
+@TYPE1@     FcConfigFile *              @ARG1@      cf
+@TYPE2@     const FcChar8 *             @ARG2@      scan_file
+@TYPE3@     const FcChar8 *             @ARG3@      output_dir
+@PURPOSE@   Write scan pattern config file
+@DESC@
+Write scan pattern config file for fonts described in JSON files
+and parse it by <function>FcConfigFileConvertJSONtoXML</function>.
+@SINCE@     2.18.2
+@@
