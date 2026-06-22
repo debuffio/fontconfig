@@ -48,10 +48,10 @@ variables:
 # changing these will force rebuilding the associated image
 # Note: these tags have no meaning and are not tied to a particular
 # fontconfig version
-  ALPINE_TAG:    '2026-04-28.1-d08dbd516dda'
-  FEDORA_TAG:    '2026-04-28.1-89961c528f40'
-  FREEBSD_TAG:   '2026-04-28.1-9e697a941122'
-  MSYS2_TAG:     '2026-04-28.1-85b55ab0f3e3'
+  ALPINE_TAG:    '2026-06-22.1-06b29abbbae9'
+  FEDORA_TAG:    '2026-06-22.1-6aa2b07f1ee7'
+  FREEBSD_TAG:   '2026-06-22.1-9cfbce181e4d'
+  MSYS2_TAG:     '2026-06-22.1-565728e79264'
 
   ALPINE_EXEC:   'bash .gitlab-ci/alpine-install.sh'
   FEDORA_EXEC:   'bash .gitlab-ci/fedora-install.sh'
@@ -159,7 +159,7 @@ msys2:latest@container-prep:
   variables:
     GIT_STRATEGY: none
     FDO_DISTRIBUTION_VERSION: 'latest'
-    FDO_DISTRIBUTION_PACKAGES: 'git mingw-w64-ucrt-x86_64-expat mingw-w64-ucrt-x86_64-freetype mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-gperf mingw-w64-ucrt-x86_64-meson mingw-w64-ucrt-x86_64-python mingw-w64-ucrt-x86_64-python-certifi mingw-w64-ucrt-x86_64-python-pip mingw-w64-ucrt-x86_64-python-yaml mingw-w64-x86_64-expat mingw-w64-x86_64-freetype mingw-w64-x86_64-gcc mingw-w64-x86_64-gperf mingw-w64-x86_64-meson mingw-w64-x86_64-python mingw-w64-x86_64-python-certifi mingw-w64-x86_64-python-pip mingw-w64-x86_64-python-yaml'
+    FDO_DISTRIBUTION_PACKAGES: 'git mingw-w64-ucrt-x86_64-expat mingw-w64-ucrt-x86_64-freetype mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-gperf mingw-w64-ucrt-x86_64-json-c mingw-w64-ucrt-x86_64-meson mingw-w64-ucrt-x86_64-python mingw-w64-ucrt-x86_64-python-certifi mingw-w64-ucrt-x86_64-python-pip mingw-w64-ucrt-x86_64-python-yaml mingw-w64-x86_64-expat mingw-w64-x86_64-freetype mingw-w64-x86_64-gcc mingw-w64-x86_64-gperf mingw-w64-x86_64-json-c mingw-w64-x86_64-meson mingw-w64-x86_64-python mingw-w64-x86_64-python-certifi mingw-w64-x86_64-python-pip mingw-w64-x86_64-python-yaml'
     FDO_DISTRIBUTION_TAG: $MSYS2_TAG
     FDO_DISTRIBUTION_EXEC: $MSYS2_EXEC
 

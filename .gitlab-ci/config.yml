@@ -1,4 +1,4 @@
-.default_tag: &default_tag "2026-04-28.1"
+.default_tag: &default_tag "2026-06-22.1"
 
 build_patterns:
   - name: "autotools shared expat"
@@ -233,6 +233,7 @@ packages:
         "mingw-w64-ucrt-x86_64-freetype",
         "mingw-w64-ucrt-x86_64-gcc",
         "mingw-w64-ucrt-x86_64-gperf",
+        "mingw-w64-ucrt-x86_64-json-c",
         "mingw-w64-ucrt-x86_64-meson",
         "mingw-w64-ucrt-x86_64-python",
         "mingw-w64-ucrt-x86_64-python-certifi",
@@ -242,6 +243,7 @@ packages:
         "mingw-w64-x86_64-freetype",
         "mingw-w64-x86_64-gcc",
         "mingw-w64-x86_64-gperf",
+        "mingw-w64-x86_64-json-c",
         "mingw-w64-x86_64-meson",
         "mingw-w64-x86_64-python",
         "mingw-w64-x86_64-python-certifi",
