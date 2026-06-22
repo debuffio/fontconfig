@@ -1,3 +1,9 @@
+if meson.is_subproject()
+  fc_build_root = subproject('fontconfig').get_variable('build_root')
+else
+  fc_build_root = meson.project_build_root()
+endif
+
 if get_option('tests-external-fonts').allowed()
   fetch_test_fonts = custom_target(
     'fetch_test_fonts',
@@ -6,7 +12,7 @@ if get_option('tests-external-fonts').allowed()
       python3,
       join_paths(meson.project_source_root(), 'build-aux', 'fetch-testfonts.py'),
       '--target-dir',
-      '@0@/testfonts'.format(meson.project_build_root()),
+      '@0@/testfonts'.format(fc_build_root),
       '--try-symlink',
     ],
     build_by_default: false,
@@ -123,7 +129,7 @@ if get_option('fontations').enabled()
     fc_fontations,
     link_with: [libfontconfig_internal],
     depends: fetch_test_fonts,
-    env: ['builddir=@0@'.format(meson.project_build_root())],
+    env: ['builddir=@0@'.format(fc_build_root)],
   )
 endif
 
@@ -167,7 +173,7 @@ if jsonc_dep.found()
     dependencies: [fontconfig_dep, jsonc_dep],
     c_args: [
       '-DSRCDIR="@0@"'.format(meson.current_source_dir()),
-      '-DBUILDROOT="@0@"'.format(meson.build_root()),
+      '-DBUILDROOT="@0@"'.format(fc_build_root),
     ],
   )
 endif
