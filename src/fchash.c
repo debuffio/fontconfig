@@ -208,3 +208,24 @@ retry:
 
     return ret;
 }
+
+void
+FcHashTableForEach (FcHashTable        *table,
+                    FcHashTableIterFunc iter_func,
+                    void               *data)
+{
+    int i;
+
+    if (!table || !iter_func)
+	return;
+
+    for (i = 0; i < FC_HASH_SIZE; i++) {
+	FcHashBucket *bucket;
+
+	for (bucket = fc_atomic_ptr_get (&table->buckets[i]); bucket;
+	     bucket = fc_atomic_ptr_get (&bucket->next)) {
+	    if (!iter_func (table, bucket->key, bucket->value, data))
+		return;
+	}
+    }
+}

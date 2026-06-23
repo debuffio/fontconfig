@@ -1,4 +1,4 @@
-.default_tag: &default_tag "2026-04-28.1"
+.default_tag: &default_tag "2026-06-23.1"
 
 build_patterns:
   - name: "autotools shared expat"
@@ -6,21 +6,25 @@ build_patterns:
       FC_BUILDSYS: autotools
       FC_BUILD_TYPE: shared
       FC_XML_BACKEND: expat
+      FC_BUILD_DISABLED: docbook
   - name: "autotools shared libxml2"
     variables:
       FC_BUILDSYS: autotools
       FC_BUILD_TYPE: shared
       FC_XML_BACKEND: libxml2
+      FC_BUILD_DISABLED: docbook
   - name: "autotools static expat"
     variables:
       FC_BUILDSYS: autotools
       FC_BUILD_TYPE: static
       FC_XML_BACKEND: expat
+      FC_BUILD_DISABLED: docbook
   - name: "autotools static libxml2"
     variables:
       FC_BUILDSYS: autotools
       FC_BUILD_TYPE: static
       FC_XML_BACKEND: libxml2
+      FC_BUILD_DISABLED: docbook
   - name: "meson shared expat"
     variables:
       FC_BUILDSYS: meson
@@ -194,7 +198,6 @@ packages:
         "git",
         "git-clang-format",
         "docbook-utils",
-        "docbook-utils-pdf",
         "bubblewrap",
         "ninja-build",
         "wget",
@@ -233,6 +236,7 @@ packages:
         "mingw-w64-ucrt-x86_64-freetype",
         "mingw-w64-ucrt-x86_64-gcc",
         "mingw-w64-ucrt-x86_64-gperf",
+        "mingw-w64-ucrt-x86_64-json-c",
         "mingw-w64-ucrt-x86_64-meson",
         "mingw-w64-ucrt-x86_64-python",
         "mingw-w64-ucrt-x86_64-python-certifi",
@@ -242,6 +246,7 @@ packages:
         "mingw-w64-x86_64-freetype",
         "mingw-w64-x86_64-gcc",
         "mingw-w64-x86_64-gperf",
+        "mingw-w64-x86_64-json-c",
         "mingw-w64-x86_64-meson",
         "mingw-w64-x86_64-python",
         "mingw-w64-x86_64-python-certifi",

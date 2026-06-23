@@ -1,0 +1,25 @@
+{
+  "add_font_for": [
+    {
+      "binding": "weak",
+      "priority": "prefer",
+      "generic_family": {
+        "serif": [
+          "FreeSerif",
+          "Code2000",
+          "Code2001" // plane1 and beyond
+        ],
+        "sans-serif": [
+          "FreeSans",
+          "Arial Unicode MS",
+          "Arial Unicode",
+          "Code2000", // almost everything; serif actually
+          "Code2001" // plane1 and beyond
+        ],
+        "monospace": [
+          "FreeMono"
+        ]
+      }
+    }
+  ]
+}

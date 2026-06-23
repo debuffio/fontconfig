@@ -1,3 +1,9 @@
+if meson.is_subproject()
+  fc_build_root = subproject('fontconfig').get_variable('build_root')
+else
+  fc_build_root = meson.project_build_root()
+endif
+
 if get_option('tests-external-fonts').allowed()
   fetch_test_fonts = custom_target(
     'fetch_test_fonts',
@@ -6,7 +12,7 @@ if get_option('tests-external-fonts').allowed()
       python3,
       join_paths(meson.project_source_root(), 'build-aux', 'fetch-testfonts.py'),
       '--target-dir',
-      '@0@/testfonts'.format(meson.project_build_root()),
+      '@0@/testfonts'.format(fc_build_root),
       '--try-symlink',
     ],
     build_by_default: false,
@@ -17,7 +23,10 @@ else
 endif
 
 tests = [
-  ['test-bz89617.c', {'c_args': ['-DSRCDIR="@0@"'.format(meson.current_source_dir())]}],
+  [
+    'test-bz89617.c',
+    {'c_args': ['-DSRCDIR="@0@"'.format(meson.current_source_dir())]},
+  ],
   ['test-bz131804.c'],
   ['test-bz96676.c'],
   ['test-name-parse.c'],
@@ -25,24 +34,49 @@ tests = [
   ['test-bz1744377.c'],
   ['test-issue180.c'],
   ['test-family-matching.c'],
-  ['test-ptrlist.c', {'include_directories': include_directories('../src'), 'dependencies': libintl_dep}],
+  [
+    'test-ptrlist.c',
+    {
+      'include_directories': include_directories('../src'),
+      'dependencies': libintl_dep,
+    },
+  ],
   ['test-ostest.c'],
 ]
 tests_build_only = [
-  ['test-gen-testcache.c', {'include_directories': include_directories('../src'), 'dependencies': libintl_dep}],
+  [
+    'test-gen-testcache.c',
+    {
+      'include_directories': include_directories('../src'),
+      'dependencies': libintl_dep,
+    },
+  ],
 ]
 tests_not_parallel = []
 
 if host_machine.system() != 'windows'
   tests += [
     # FIXME: ['test-migration.c'],
-    ['test-bz106632.c', {'c_args': ['-DFONTFILE="@0@"'.format(join_paths(meson.current_source_dir(), '4x6.pcf'))]}],
-    ['test-issue107.c'], # FIXME: fails on mingw
+    [
+      'test-bz106632.c',
+      {
+        'c_args': [
+          '-DFONTFILE="@0@"'.format(join_paths(meson.current_source_dir(), '4x6.pcf')),
+        ],
+      },
+    ],
+    ['test-issue107.c'],  # FIXME: fails on mingw
   ]
   tests_not_parallel += [
     # FIXME: this needs NotoSans-hinted.zip font downloaded and unpacked into test build directory! see run-test.sh
-    ['test-crbug1004254.c', {'dependencies': dependency('threads')}], # for pthread
-    ['test-mt-fccfg.c', {'include_directories': include_directories('../src'), 'dependencies': dependency('threads')}],
+    ['test-crbug1004254.c', {'dependencies': dependency('threads')}],  # for pthread
+    [
+      'test-mt-fccfg.c',
+      {
+        'include_directories': include_directories('../src'),
+        'dependencies': dependency('threads'),
+      },
+    ],
   ]
 
   if get_option('default_library') == 'static'
@@ -67,7 +101,11 @@ foreach test_data : tests + tests_not_parallel + tests_build_only
 
   test_name = fname.split('.')[0].underscorify()
 
-  exe = executable(test_name, fname, fcstdint_h, fclang_h,
+  exe = executable(
+    test_name,
+    fname,
+    fcstdint_h,
+    fclang_h,
     c_args: c_args + extra_c_args,
     include_directories: [incbase] + extra_incdir,
     link_with: link_with_libs,
@@ -86,17 +124,21 @@ endforeach
 
 if get_option('fontations').enabled()
   rust = import('rust')
-  rust.test('fc_fontations_rust_tests', fc_fontations, link_with: [libfontconfig_internal], depends: fetch_test_fonts, env: ['builddir=@0@'.format(meson.project_build_root())],)
+  rust.test(
+    'fc_fontations_rust_tests',
+    fc_fontations,
+    link_with: [libfontconfig_internal],
+    depends: fetch_test_fonts,
+    env: ['builddir=@0@'.format(fc_build_root)],
+  )
 endif
 
 fs = import('fs')
 
 if conf.get('FREETYPE_PCF_LONG_FAMILY_NAMES')
-  out_expected = fs.copyfile('out.expected-long-family-names',
-                             'out.expected')
+  out_expected = fs.copyfile('out.expected-long-family-names', 'out.expected')
 else
-  out_expected = fs.copyfile('out.expected-no-long-family-names',
-                             'out.expected')
+  out_expected = fs.copyfile('out.expected-no-long-family-names', 'out.expected')
 endif
 
 if pytest.found()
@@ -104,28 +146,42 @@ if pytest.found()
   if not get_option('tests-external-fonts').allowed()
     pytest_args += ['-m', 'not network']
   endif
-  test('pytest', pytest, args: pytest_args,
-       workdir: meson.current_source_dir(),
-       env: [
-         'builddir=@0@'.format(meson.project_build_root()),
-         'srcdir=@0@'.format(meson.project_source_root()),
-         'EXEEXT=@0@'.format(conf.get('EXEEXT')),
-         'CC=@0@'.format(meson.get_compiler('c').cmd_array()[0]),
-         'FC_DISABLE_BWRAP=@0@'.format((not get_option('tests-bwrap').allowed()).to_int()),
-       ],
-       protocol: 'tap',
-       timeout: 600,
-       depends: fetch_test_fonts)
+  test(
+    'pytest',
+    pytest,
+    args: pytest_args,
+    workdir: meson.current_source_dir(),
+    env: [
+      'builddir=@0@'.format(meson.project_build_root()),
+      'srcdir=@0@'.format(meson.project_source_root()),
+      'EXEEXT=@0@'.format(conf.get('EXEEXT')),
+      'CC=@0@'.format(meson.get_compiler('c').cmd_array()[0]),
+      'FC_DISABLE_BWRAP=@0@'.format(
+        (not get_option('tests-bwrap').allowed()).to_int(),
+      ),
+    ],
+    protocol: 'tap',
+    timeout: 600,
+    depends: fetch_test_fonts,
+  )
 endif
 
 if jsonc_dep.found()
-  test_conf = executable('test-conf', 'test-conf.c',
-                         dependencies: [fontconfig_dep, jsonc_dep],
-                         c_args: ['-DSRCDIR="@0@"'.format(meson.current_source_dir())])
+  test_conf = executable(
+    'test-conf',
+    'test-conf.c',
+    dependencies: [fontconfig_dep, jsonc_dep],
+    c_args: [
+      '-DSRCDIR="@0@"'.format(meson.current_source_dir()),
+      '-DBUILDROOT="@0@"'.format(fc_build_root),
+    ],
+  )
 endif
 
-test_const_name = executable('test_const_name', test_const_name_c,
-                             include_directories: [incbase],
-                             link_with: libfontconfig,
-                  )
+test_const_name = executable(
+  'test_const_name',
+  test_const_name_c,
+  include_directories: [incbase],
+  link_with: libfontconfig,
+)
 test('test_const_name', test_const_name)

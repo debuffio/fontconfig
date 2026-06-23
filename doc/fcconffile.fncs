@@ -14,3 +14,46 @@ to correct and filter font metadata. The supported parameter is
 `family', `genericfamily', and `lang' at this moment.
 @SINCE@     2.18.0
 @@
+
+@RET@       FcConfigFile *
+@FUNC@      FcConfigFileCreate
+@TYPE1@     void
+@PURPOSE@   Create a FcConfigFile
+@DESC@
+Create an instance to drive config file conversion.
+@SINCE@     2.18.2
+@@
+
+@RET@       void
+@FUNC@      FcConfigFileDestroy
+@TYPE1@     FcConfigFile *              @ARG1@      cf
+@PURPOSE@   Destroy a FcConfigFile
+@DESC@
+Free a memory allocated for an instance of FcConfigFile.
+@SINCE@     2.18.2
+@@
+
+@RET@       FcBool
+@FUNC@      FcConfigFileConvertJSONtoXML
+@TYPE1@     FcConfigFile *              @ARG1@      cf
+@TYPE2@     const FcChar8 *             @ARG2@      json_file
+@TYPE3@     const FcChar8 *             @ARG3@      output_dir
+@PURPOSE@   Convert JSON-based config file to XML-based config file
+@DESC@
+Convert JSON-based config file to XML-based config file.
+Output files will be stored as the same name but with the suffix
+.conf instead of .json.
+@SINCE@     2.18.2
+@@
+
+@RET@       FcBool
+@FUNC@      FcConfigFileWriteScanPattern
+@TYPE1@     FcConfigFile *              @ARG1@      cf
+@TYPE2@     const FcChar8 *             @ARG2@      scan_file
+@TYPE3@     const FcChar8 *             @ARG3@      output_dir
+@PURPOSE@   Write scan pattern config file
+@DESC@
+Write scan pattern config file for fonts described in JSON files
+and parse it by <function>FcConfigFileConvertJSONtoXML</function>.
+@SINCE@     2.18.2
+@@

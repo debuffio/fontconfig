@@ -498,9 +498,9 @@ fi
 #
 # Check json-c
 #
-PKG_CHECK_MODULES([JSONC], [json-c], [use_jsonc=yes], [use_jsonc=no])
+PKG_CHECK_MODULES([JSONC], [json-c])
 
-AM_CONDITIONAL(ENABLE_JSONC, test "x$use_jsonc" = "xyes")
+AM_CONDITIONAL(ENABLE_JSONC, 1)
 AC_SUBST(JSONC_CFLAGS)
 AC_SUBST(JSONC_LIBS)
 

@@ -1,0 +1,41 @@
+{
+  "description": "Set substitutions for emoji/math fonts",
+  "$comment": "Keep in sync with 60-generic.conf",
+  "add_font_as": [
+    {
+      "$comment": "Emoji",
+      "binding": "same",
+      "priority": "default",
+      "generic_family": {
+        "emoji": [
+          "Noto Color Emoji", // Google - System emoji
+          "Apple Color Emoji", // Apple
+          "Segoe UI Emoji", // Microsoft
+          "Twitter Color Emoji", // Twitter
+          "EmojiOne Mozilla", // Mozilla
+          "Emoji Two", // Third-party emoji
+          "JoyPixels",
+          "Emoji One",
+          "Noto Emoji", // Google - B&W
+          "Android Emoji" // Google
+        ]
+      }
+    },
+    {
+      "$comment": "Math - https://en.wikipedia.org/wiki/Category:Mathematical_OpenType_typefaces",
+      "binding": "same",
+      "priority": "default",
+      "generic_family": {
+        "math": [
+          "XITS Math", // Khaled Hosny
+          "STIX Two Math", // AMS
+          "Cambria Math", // Microsoft
+          "Latin Modern Math", // TeX
+          "Minion Math", // Adobe
+          "Lucida Math", // Adobe
+          "Asana Math"
+        ]
+      }
+    }
+  ]
+}

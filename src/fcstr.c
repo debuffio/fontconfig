@@ -1313,6 +1313,35 @@ FcStrCanonFilename (const FcChar8 *s)
 #endif
 }
 
+FcChar8 *
+FcStrEscapeXML (const FcChar8 *str)
+{
+    FcStrBuf buf;
+    size_t   i, len;
+
+    if (!str)
+	return NULL;
+    len = strlen ((const char *)str);
+    FcStrBufInit (&buf, NULL, 0);
+    for (i = 0; i < len; i++) {
+	if (str[i] == '<') {
+	    FcStrBufString (&buf, (const FcChar8 *)"&lt;");
+	} else if (str[i] == '>') {
+	    FcStrBufString (&buf, (const FcChar8 *)"&gt;");
+	} else if (str[i] == '&') {
+	    FcStrBufString (&buf, (const FcChar8 *)"&amp;");
+	} else if (str[i] == '"') {
+	    FcStrBufString (&buf, (const FcChar8 *)"&quot;");
+	} else if (str[i] == '\'') {
+	    FcStrBufString (&buf, (const FcChar8 *)"&apos;");
+	} else {
+	    FcStrBufChar (&buf, str[i]);
+	}
+    }
+
+    return FcStrBufDone (&buf);
+}
+
 FcStrSet *
 FcStrSetCreate (void)
 {

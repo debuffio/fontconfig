@@ -19,7 +19,7 @@
     "conf.d/48-guessfamily.conf",
     "conf.d/49-sansserif.conf",
     "%test%/test-issue-525-2.conf",
-    "conf.d/60-latin.conf",
+    "%buildroot%/conf.d/60-latin.conf",
   ],
   "tests": [
     {

@@ -61,7 +61,7 @@ else
   endif
 endif
 
-jsonc_dep = dependency('json-c', required: false)
+jsonc_dep = dependency('json-c', required: true)
 
 xml_dep = dependency('', required: false)
 xmlbackend = get_option('xml-backend')
@@ -190,7 +190,7 @@ add_project_arguments('-DHAVE_CONFIG_H', language: 'c')
 
 c_args = []
 
-deps = [freetype_dep, xml_dep]
+deps = [freetype_dep, xml_dep, jsonc_dep]
 incbase = include_directories('.', 'fc-lang')
 
 # For compatibility to autoconf (regardless of the usage in fontconfig)

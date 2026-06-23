@@ -254,3 +254,12 @@ Returns the filename of <parameter>file</parameter> stripped of any leading
 directory names.  This is returned in newly allocated storage which should
 be freed when no longer needed.
 @@
+
+@RET@           FcChar8 *
+@FUNC@          FcStrEscapeXML
+@TYPE1@         const FcChar8 *                 @ARG1@          str
+@PURPOSE@       Escape XML string
+@DESC@
+Returns an escaped string for XML to avoid XML-injection.
+@SINCE@         2.18.2
+@@
